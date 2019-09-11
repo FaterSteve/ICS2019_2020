@@ -1,9 +1,0 @@
-About Me
-Name: Ryan Cadell
-Age: 16
-Hobbies: Reading Books and watching Youtube
-
-About ICS
-Teachers: Mr. Seward and Dr. Jack
-Status: Fun and educational
-Main Subjects: Java and Python
