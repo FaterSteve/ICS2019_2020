@@ -24,7 +24,7 @@ def titlepage():
 	newpage(7)
 	time.sleep(3)
 	title()
-	newpage(16)
+	newpage(17)
 	time.sleep(2.5)
 	input("Press 'enter' to continue to the game.")
 	
