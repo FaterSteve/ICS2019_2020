@@ -23,6 +23,7 @@ public class Program{
 		//Goes into getN and brings boolean debug with it
 		getN(debug);
 	}
+
 	//Gets the n variable (number of sides the polygon will have) and calculates the angle
 	public static void getN(boolean debug){
 		//A try so that if something goes wrong, I've got a recursion loop to meet the requirements of the assignment!
@@ -36,8 +37,7 @@ public class Program{
 			double angle = (180-((180.0*(n-2.0))/n));
 			//hopefully prints the same number you typed in if in debug mode 
 			if(debug == true){
-				System.out.printf("We got N! It's ");
-				System.out.println(n);
+				System.out.print("We got N! It's "+n+"\n");
 			}
 				//Makes sure n is greater than 2
 				if(n > 2){
@@ -45,11 +45,10 @@ public class Program{
 					if(debug == true){
 						System.out.printf("The total of all interior angles is ");
 						System.out.println((180.0*(n-2.0)));
-						System.out.printf("Each interior angles is ");
-						System.out.println(angle+180);
+						System.out.printf("Each interior angles is "+(angle+180)+" degrees");
 					}
-					//runs drawSide. It pulls the angle.
-					drawSide(debug, angle);
+					//runs createTurtle. It pulls the angle
+					createTurtle(debug, angle, n);
 				}
 				//If n is less than or equal to 2 it throws an exception, hits the catch, and does some recursion
 				else{
@@ -61,31 +60,40 @@ public class Program{
 			if(debug == true){
 				System.out.println("\nHouston, we have a problem.");
 			}
-			//RECURSION LOOP IF INT NOT ENTERED OR IF INT IS LESS THAN OR EQUAL TO 2 also pulls debug back for more fun in the sun.
+			//pulls debug back for more fun if it's true.
 			System.out.println("Pease input an integer that is greater than 2");
 			getN(debug);
 			
 		}
 	}
-	//This draws a regualr polygon with n sides
-	public static void drawSide(boolean debug, double angle){
-		//I only made this so I could compile, it makes the program think it can escape the while loop. Remember, there is a recursion loop above, it is just kind of optional.
-		boolean oneSide = false;
+	//This defines the turtle that will be used in the recursion loop later
+	public static void createTurtle(boolean debug, double angle, int n){
 		//make/define a turtle
 		Turtle bob;
 		bob = new Turtle();
-		//Draw a turtle side over and over over and over and over...
-		System.out.println("Running...");
-		while(true){
+		System.out.println("Running...\n");
+		drawSide(debug, angle, n, bob);
+	}
+	public static void drawSide(boolean debug, double angle, int n, Turtle bob){
+		if(n>0){
 			bob.speed(15);
 			bob.forward(40);
 			bob.left(angle);
-			//just something I wanted for fun, so I put it into debug mode. It just says this until the program gets stopped, and it doesnt make a new line each time.
+			n--;
+			//just something I wanted for fun, so I put it into the debug mode. It just says this until the program gets stopped, and it doesnt make a new line each time.
 			if(debug == true){
-				System.out.printf("around and ");
+				System.out.print("around and ");
 			}
-				if (oneSide == true)
-					break;
+			drawSide(debug, angle, n, bob);
+		}else{
+			if(debug == true){
+				System.out.println("around.\n");
+			}
+			System.out.print("Press enter to exit code");
+			Scanner stop = new Scanner(System.in);
+			String Stop = stop.nextLine();
+			System.exit(0);
+			
 		}
-	}
+	}	
 }
