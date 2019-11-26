@@ -93,7 +93,6 @@ public class Program{
 			Scanner stop = new Scanner(System.in);
 			String Stop = stop.nextLine();
 			System.exit(0);
-			
 		}
 	}	
 }
